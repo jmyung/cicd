@@ -36,9 +36,9 @@ pipeline {
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
-*/                    
-            echo 'Running Push Docker Image'
                 }
+*/                    
+            echo 'Running Push Docker Image'                
             }
         }                
         stage('DeployToProduction') {
