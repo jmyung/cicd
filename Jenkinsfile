@@ -14,12 +14,13 @@ pipeline {
                 branch 'master'
             }
             steps {
-                script {
-                    app = docker.build(DOCKER_IMAGE_NAME)
-                    app.inside {
-                        sh 'echo Hello, World!'
-                    }
-                }
+#                script {
+#                    app = docker.build(DOCKER_IMAGE_NAME)
+#                    app.inside {
+#                        sh 'echo Hello, World!'
+#                    }
+#                }
+            echo 'Running Build Docker Image'
             }
         }
         stage('Push Docker Image') {
@@ -27,11 +28,12 @@ pipeline {
                 branch 'master'
             }
             steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
-                        app.push("${env.BUILD_NUMBER}")
-                        app.push("latest")
-                    }
+#                script {
+#                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
+#                        app.push("${env.BUILD_NUMBER}")
+#                        app.push("latest")
+#                    }
+            echo 'Running Push Docker Image'
                 }
             }
         }                
